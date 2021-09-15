@@ -1,14 +1,6 @@
 
 let registros=[];
-let agregar = 's';
-
-if((agregar =='s') || (agregar =='n')){
-    while(agregar == 's'){
-        RegistroPessoa();
-        agregar = prompt('Desea agregar mais pessoas? S/N');
-    }
-}else{ prompt('Dato invalido');
-    }
+let agregar;
 
 function RegistroPessoa(){
     let registro={
@@ -19,14 +11,34 @@ function RegistroPessoa(){
      registros.push(registro);   
 }
 
-console.log('Los registros son:\n')
- for(let registro of registros){
-     console.log('Nome: '+registro.nome+ ' Idade: '+registro.idade);
- }
+do{
+    RegistroPessoa();
+    agregar = prompt('Desea agregar mais pessoas? S/N');
+
+    if((!agregar == 'S') || (!agregar =='s') && (
+        !agregar == 'N') || (!agregar =='n')){
+        alert('Dato Invalido');
+    }
+}while((agregar == 'S') || (agregar =='s'));
+
+function comparaIdade(registros){   
+    let  pessoaVelha = registros.find((element, index) => 
+    element.idade > registros[0].idade && index !== 0)
+    console.log('O mais velho e: '+pessoaVelha.nome+' com '+pessoaVelha.idade+' anos');
+} 
+
+function mostra(){
+    console.log('Los registros son:\n')
+        
+    for(let registro of registros){
+        console.log('Nome: '+registro.nome+ ' Idade: '+registro.idade);
+    }
+    comparaIdade(registros);
+}
+
+mostra();
     
-   let  pessoaVelha = registros.find((element, index) => 
-        element.idade > registros[0].idade && index !== 0)
-        console.log('O mais velho e: '+pessoaVelha.nome+' com '+pessoaVelha.idade+'anos');
+   
             
      
         
