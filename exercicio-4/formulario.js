@@ -1,19 +1,16 @@
 let registros=[];
+let pessoVelha;
 
-let registro ={
+let registro = {
     nome:'',
     idade:'' 
  }
 
-let pessoVelha;
- 
-
  function agregarRegistro(){
      
-
-     let imputNome= document.querySelector('#nome');
+     let imputNome= document.querySelector('#name');
      let imputIdade=document.querySelector('#idade');
-     let listaRegistro=document.querySelector('#listaRegistro');
+     
       
      let capturaNome=imputNome.value;
      let capturaIdade=imputIdade.value;
@@ -27,11 +24,19 @@ let pessoVelha;
 
      imputNome.value='';
      imputIdade.value='';
-      
-     let listemItem= document.createElement('li');
+     
 
-     listemItem.textContent=capturaNome;
-     listaRegistro.appendChild(listemItem);
+     let listaRegistro = document.querySelector('#listaRegistro');
+    
+     let listaNome = document.createElement('li');
+     listaNome.textContent = capturaNome;
+
+     let listaIdade = document.createElement('li');
+     listaIdade.textContent = capturaIdade;
+
+     
+     listaRegistro.appendChild(listaNome);
+     listaRegistro.appendChild(listaIdade);
 
      console.log('Los registros son:\n')
     
@@ -46,8 +51,4 @@ let pessoVelha;
  }
 
     
-    document.querySelector('#btnRegistro').addEventListener('click', agregarRegistro);
-    
-     
-
     
